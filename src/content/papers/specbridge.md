@@ -13,8 +13,9 @@ venueType: "Conference"
 venueLevel: "CCF-B"
 acceptedDate: "2026-05-01"
 fieldTags:
-  - "3D Vision"
+  - "3D Understanding"
   - "Vision-Language Learning"
+  - "Multi-Modal Learning"
 levelTags:
   - "CCF-B"
   - "International Conference"

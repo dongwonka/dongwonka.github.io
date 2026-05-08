@@ -6,8 +6,9 @@
   "avatar": "/images/avatar.jpg",
   "researchInterests": [
     "3D Understanding",
-    "Vehicle Re-Identification",
-    "Multimodal Perception"
+    "Large-scale Pre-training",
+    "Multimodal Perception",
+    "Re-identification"
   ],
   "email": "dongwang25@nudt.edu.cn",
   "googleScholar": "https://scholar.google.com/citations?user=QGaI8lEAAAAJ&hl=en&authuser=1"
