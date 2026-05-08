@@ -13,6 +13,7 @@ const papers = defineCollection({
     levelTags: z.array(z.string()),
     image: z.string(),
     paperUrl: z.string().optional().default(''),
+    paperStatus: z.enum(['available', 'comingSoon']).optional().default('available'),
     summary: z.string(),
     abstract: z.string()
   })

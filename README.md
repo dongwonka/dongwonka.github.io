@@ -78,12 +78,41 @@ levelTags:
   - "International Conference"
 image: "/images/papers/new-paper.png"
 paperUrl: ""
+paperStatus: "comingSoon"
 summary: "A short summary shown on the homepage."
 abstract: "The full abstract shown on the paper detail page."
 ---
 ```
 
 首页会自动读取 `src/content/papers/` 中的论文，并按 `acceptedDate` 从新到旧排序。如果录用时间相同，则按论文标题排序。
+
+`paperStatus` 用来控制论文详情页的链接按钮。
+
+论文还没有公开链接时，使用：
+
+```yaml
+paperUrl: ""
+paperStatus: "comingSoon"
+```
+
+详情页会显示：
+
+```text
+Coming soon.
+```
+
+不会出现错误跳转。
+
+论文已经有正式链接时，使用：
+
+```yaml
+paperUrl: "https://example.com/your-paper"
+paperStatus: "available"
+```
+
+这种情况下详情页会显示 `View Paper` 按钮。
+
+如果没有写 `paperStatus`，只要 `paperUrl` 是合法的 `http` 或 `https` 链接，也会正常显示 `View Paper`。
 
 ## 添加论文图片
 

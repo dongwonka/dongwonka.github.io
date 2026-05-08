@@ -19,6 +19,7 @@ export async function getStaticPaths() {
 const { paper } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const paperImage = `${base}${paper.image.replace(/^\//, '')}`;
+const hasPaperUrl = paper.paperStatus !== 'comingSoon' && /^https?:\/\//.test(paper.paperUrl);
 const date = new Date(`${paper.acceptedDate}T00:00:00`);
 const displayDate = date.toLocaleDateString('en', {
   year: 'numeric',
@@ -81,7 +82,7 @@ const displayDate = date.toLocaleDateString('en', {
     </section>
 
     {
-      paper.paperUrl ? (
+      hasPaperUrl ? (
         <a
           href={paper.paperUrl}
           target="_blank"
@@ -92,7 +93,7 @@ const displayDate = date.toLocaleDateString('en', {
         </a>
       ) : (
         <p class="inline-flex rounded-md border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-600">
-          Paper link will be available soon.
+          Coming soon.
         </p>
       )
     }

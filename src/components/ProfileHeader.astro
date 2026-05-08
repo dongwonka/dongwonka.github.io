@@ -49,7 +49,7 @@ const avatarSrc = `${base}${profile.avatar.replace(/^\//, '')}`;
 
       <div class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-slate-800">
         <a class="underline decoration-slate-300 underline-offset-4 hover:text-sky-700" href={`mailto:${profile.email}`}>
-          Email
+          {profile.email}
         </a>
         <a
           class="underline decoration-slate-300 underline-offset-4 hover:text-sky-700"

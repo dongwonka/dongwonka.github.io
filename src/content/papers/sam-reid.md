@@ -12,7 +12,7 @@ authors:
 venue: "CVM2024"
 venueType: "Conference"
 venueLevel: "CCF-B"
-acceptedDate: "2023-12-5"
+acceptedDate: "2023-12-05"
 fieldTags:
   - "Vehicle Re-ID"
   - "Unsupervised Learning"

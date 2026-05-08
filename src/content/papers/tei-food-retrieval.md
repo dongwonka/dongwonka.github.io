@@ -12,7 +12,7 @@ authors:
 venue: "IEEE Transactions on Multimedia, Vol. 27, 2025"
 venueType: "Journal"
 venueLevel: "CCF-A"
-acceptedDate: "2025-2-18"
+acceptedDate: "2025-02-18"
 fieldTags:
   - "Cross-Modal Retrieval"
   - "Food Computing"
