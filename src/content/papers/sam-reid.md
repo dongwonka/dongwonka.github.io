@@ -23,6 +23,7 @@ levelTags:
   - "Conference"
 image: "/images/papers/sam-reid.jpg"
 paperUrl: "https://ieeexplore.ieee.org/abstract/document/10897722"
+paperStatus: "available"
 summary: "A SAM-driven MAE pre-training and background-aware meta-learning framework for reducing background interference in unsupervised vehicle Re-ID."
 abstract: "This paper addresses background interference in unsupervised vehicle re-identification by combining SAM-driven masked autoencoder pre-training with background-aware meta-learning. The method first uses SAM to separate vehicle identity regions from background regions, and further introduces a spatially constrained background segmentation strategy to handle difficult cases such as occlusion and ambiguous vehicle boundaries. Based on the optimized segmentation results, SAM-driven MAE pre-training selectively preserves vehicle-related patches and masks background regions, encouraging the encoder to learn identity-sensitive representations in a self-supervised manner. To improve robustness under varying scene conditions, the paper further proposes a background-aware meta-learning strategy that constructs meta-training and meta-testing splits according to different background region ratios. Experiments on VeRi-776 and VeRi-Wild demonstrate that the proposed method effectively reduces background interference and improves unsupervised vehicle Re-ID performance."
 ---
