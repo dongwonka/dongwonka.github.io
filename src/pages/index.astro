@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PaperCard from '../components/PaperCard.astro';
+import ProfileHeader from '../components/ProfileHeader.astro';
+import profile from '../data/profile.json';
+
+const papers = (await getCollection('papers'))
+  .map((paper) => ({
+    ...paper.data,
+    slug: paper.slug
+  }))
+  .sort((a, b) => {
+    const dateDiff = new Date(b.acceptedDate).getTime() - new Date(a.acceptedDate).getTime();
+    if (dateDiff !== 0) return dateDiff;
+    return a.title.localeCompare(b.title);
+  });
+---
+
+<BaseLayout>
+  <ProfileHeader profile={profile} />
+
+  <section class="pt-8">
+    <div class="mb-5 flex items-end justify-between gap-4">
+      <h2 class="text-2xl font-semibold text-slate-950">Publications</h2>
+      <p class="text-sm text-slate-500">{papers.length} papers</p>
+    </div>
+
+    <div class="grid gap-4">
+      {papers.map((paper) => <PaperCard paper={paper} />)}
+    </div>
+  </section>
+</BaseLayout>

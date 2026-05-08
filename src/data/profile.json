@@ -1,0 +1,14 @@
+{
+  "nameZh": "王栋",
+  "nameEn": "Dong Wang",
+  "title": "Ph.D. Student",
+  "affiliation": "National University of Defense Technology",
+  "avatar": "/images/avatar.jpg",
+  "researchInterests": [
+    "3D Vision-Language Learning",
+    "Vehicle Re-Identification",
+    "Multimodal Perception"
+  ],
+  "email": "your_email@example.com",
+  "googleScholar": "https://scholar.google.com/"
+}

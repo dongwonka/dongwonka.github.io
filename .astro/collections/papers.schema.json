@@ -1,0 +1,74 @@
+{
+  "$ref": "#/definitions/papers",
+  "definitions": {
+    "papers": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "venue": {
+          "type": "string"
+        },
+        "venueType": {
+          "type": "string"
+        },
+        "venueLevel": {
+          "type": "string"
+        },
+        "acceptedDate": {
+          "type": "string"
+        },
+        "fieldTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "levelTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "image": {
+          "type": "string"
+        },
+        "paperUrl": {
+          "type": "string",
+          "default": ""
+        },
+        "summary": {
+          "type": "string"
+        },
+        "abstract": {
+          "type": "string"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "authors",
+        "venue",
+        "venueType",
+        "venueLevel",
+        "acceptedDate",
+        "fieldTags",
+        "levelTags",
+        "image",
+        "summary",
+        "abstract"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

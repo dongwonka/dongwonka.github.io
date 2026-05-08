@@ -1,0 +1,65 @@
+---
+import Tag from './Tag.astro';
+
+interface Profile {
+  nameZh: string;
+  nameEn: string;
+  title: string;
+  affiliation: string;
+  avatar: string;
+  researchInterests: string[];
+  email: string;
+  googleScholar: string;
+}
+
+interface Props {
+  profile: Profile;
+}
+
+const { profile } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const avatarSrc = `${base}${profile.avatar.replace(/^\//, '')}`;
+---
+
+<section class="border-b border-slate-200 pb-8">
+  <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
+    <img
+      src={avatarSrc}
+      alt={`${profile.nameEn} avatar`}
+      class="h-28 w-28 shrink-0 rounded-md border border-slate-200 bg-white object-cover sm:h-32 sm:w-32"
+      loading="eager"
+    />
+
+    <div class="min-w-0 flex-1">
+      <div class="flex flex-col gap-1">
+        <h1 class="text-3xl font-semibold tracking-normal text-slate-950 sm:text-4xl">
+          {profile.nameZh}
+        </h1>
+        <p class="text-lg text-slate-700">{profile.nameEn}</p>
+      </div>
+
+      <div class="mt-4 space-y-1.5 text-sm leading-6 text-slate-700 sm:text-base">
+        <p>{profile.title}</p>
+        <p>{profile.affiliation}</p>
+      </div>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+        {profile.researchInterests.map((interest) => <Tag label={interest} type="field" />)}
+      </div>
+
+      <div class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-slate-800">
+        <a class="underline decoration-slate-300 underline-offset-4 hover:text-sky-700" href={`mailto:${profile.email}`}>
+          Email
+        </a>
+        <a
+          class="underline decoration-slate-300 underline-offset-4 hover:text-sky-700"
+          href={profile.googleScholar}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Google Scholar
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
