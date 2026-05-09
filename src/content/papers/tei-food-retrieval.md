@@ -9,7 +9,7 @@ authors:
   - "Qing Han"
   - "Cheng Zha"
   - "Yuling Zhong"
-venue: "IEEE Transactions on Multimedia, Vol. 27, 2025"
+venue: "IEEE Transactions on Multimedia (TMM)"
 venueType: "Journal"
 venueLevel: "CCF-A"
 acceptedDate: "2025-02-18"

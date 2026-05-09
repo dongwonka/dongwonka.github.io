@@ -9,7 +9,7 @@ authors:
   - "Qing Han"
   - "Longfei Li"
   - "Yuhan Geng"
-venue: "CVM2024"
+venue: "Computational Visual Media 2024 (CVM2024)"
 venueType: "Conference"
 venueLevel: "CCF-B"
 acceptedDate: "2023-12-05"

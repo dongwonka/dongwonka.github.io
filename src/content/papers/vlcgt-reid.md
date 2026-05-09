@@ -9,7 +9,7 @@ authors:
   - "Xin Xiong"
   - "Yuling Zhong"
   - "Di Gai"
-venue: "Expert Systems With Applications, Vol. 255, 2024, Article 124495"
+venue: "Expert Systems With Applications (ESWA)"
 venueType: "Journal"
 venueLevel: "SCI-Q1"
 acceptedDate: "2024-06-11"

@@ -8,7 +8,7 @@ authors:
   - "Lixin Zhan"
   - "Xinpeng Zhao"
   - "Ze Zhang"
-venue: "IJCAI-ECAI 2026"
+venue: "International Joint Conference on Artificial Intelligence 2026 (IJCAI2026)"
 venueType: "Conference"
 venueLevel: "CCF-B"
 acceptedDate: "2026-05-01"

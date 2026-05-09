@@ -9,7 +9,7 @@ authors:
   - "Xin Xiong"
   - "Jiyang Xu"
   - "Ruihua Zhou"
-venue: "ICCV 2025"
+venue: "International Conference on Computer Vision 2025 (ICCV 2025)"
 venueType: "Conference"
 venueLevel: "CCF-A"
 acceptedDate: "2025-08-30"
