@@ -2,8 +2,10 @@
 slug: "vlcgt-reid"
 title: "Vision-Language Constraint Graph Representation Learning for Unsupervised Vehicle Re-identification"
 authors:
-  - "Dong Wang"
-  - "Qi Wang"
+  - name: "Dong Wang"
+    bold: true
+  - name: "Qi Wang"
+    corresponding: true
   - "Zhiwei Tu"
   - "Weidong Min"
   - "Xin Xiong"

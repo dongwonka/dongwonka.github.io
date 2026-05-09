@@ -1,10 +1,19 @@
 import { defineCollection, z } from 'astro:content';
 
+const authorSchema = z.union([
+  z.string(),
+  z.object({
+    name: z.string(),
+    bold: z.boolean().optional().default(false),
+    corresponding: z.boolean().optional().default(false)
+  })
+]);
+
 const papers = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    authors: z.array(z.string()),
+    authors: z.array(authorSchema),
     venue: z.string(),
     venueType: z.string(),
     venueLevel: z.string(),

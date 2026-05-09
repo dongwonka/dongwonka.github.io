@@ -1,10 +1,19 @@
 ---
 import Tag from './Tag.astro';
+import AuthorList from './AuthorList.astro';
+
+type Author =
+  | string
+  | {
+      name: string;
+      bold?: boolean;
+      corresponding?: boolean;
+    };
 
 interface PaperData {
   slug: string;
   title: string;
-  authors: string[];
+  authors: Author[];
   venue: string;
   acceptedDate: string;
   fieldTags: string[];
@@ -38,9 +47,9 @@ const displayDate = date.toLocaleDateString('en', {
       <time class="shrink-0 text-sm text-slate-500" datetime={paper.acceptedDate}>{displayDate}</time>
     </div>
 
-    <p class="text-sm leading-6 text-slate-700">{paper.authors.join(', ')}</p>
-    <p class="text-sm font-medium text-slate-800">{paper.venue}</p>
-    <p class="text-sm leading-6 text-slate-600">{paper.summary}</p>
+    <AuthorList authors={paper.authors} class="text-sm leading-6 text-slate-700" />
+    <p class="text-sm font-medium italic text-slate-800">{paper.venue}</p>
+    <p class="text-sm leading-6 text-slate-600 underline decoration-slate-300 underline-offset-2">{paper.summary}</p>
 
     <div class="flex flex-wrap gap-2 pt-1">
       {paper.fieldTags.map((tag) => <Tag label={tag} type="field" />)}

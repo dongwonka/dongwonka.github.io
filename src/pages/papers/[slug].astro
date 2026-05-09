@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AuthorList from '../../components/AuthorList.astro';
 import Tag from '../../components/Tag.astro';
 
 export async function getStaticPaths() {
@@ -43,7 +44,7 @@ const displayDate = date.toLocaleDateString('en', {
         {paper.title}
       </h1>
 
-      <p class="text-base leading-7 text-slate-700">{paper.authors.join(', ')}</p>
+      <AuthorList authors={paper.authors} class="text-base leading-7 text-slate-700" />
 
       <div class="flex flex-wrap gap-2">
         {paper.fieldTags.map((tag) => <Tag label={tag} type="field" />)}

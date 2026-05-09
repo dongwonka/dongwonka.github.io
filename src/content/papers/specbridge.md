@@ -2,8 +2,10 @@
 slug: "specbridge"
 title: "SpecBridge: Spectral Graph Bridging for 3D-2D-Text Pre-training"
 authors:
-  - "Dong Wang"
-  - "Jie Jiang*"
+  - name: "Dong Wang"
+    bold: true
+  - name: "Jie Jiang"
+    corresponding: true
   - "Weidong Min"
   - "Lixin Zhan"
   - "Xinpeng Zhao"

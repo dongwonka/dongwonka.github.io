@@ -1,0 +1,73 @@
+---
+type Author =
+  | string
+  | {
+      name: string;
+      bold?: boolean;
+      corresponding?: boolean;
+    };
+
+interface Props {
+  authors: Author[];
+  class?: string;
+}
+
+const { authors, class: className = '' } = Astro.props;
+
+const normalizeAuthor = (author: Author) => {
+  if (typeof author === 'string') {
+    const trimmed = author.trim();
+    const corresponding = trimmed.endsWith('*');
+
+    return {
+      name: corresponding ? trimmed.replace(/\*+$/, '') : trimmed,
+      bold: false,
+      corresponding
+    };
+  }
+
+  return {
+    name: author.name,
+    bold: author.bold ?? false,
+    corresponding: author.corresponding ?? false
+  };
+};
+
+const normalizedAuthors = authors.map(normalizeAuthor);
+---
+
+<p class={className}>
+  {
+    normalizedAuthors.map((author, index) => (
+      <>
+        <span class="inline-flex items-baseline gap-1">
+          <span class={author.bold ? 'font-semibold text-slate-950' : undefined}>{author.name}</span>
+          {
+            author.corresponding && (
+              <span
+                class="inline-flex translate-y-px text-slate-500"
+                title="Corresponding author"
+                aria-label="Corresponding author"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="h-3.5 w-3.5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+              </span>
+            )
+          }
+        </span>
+        {index < normalizedAuthors.length - 1 && <span>, </span>}
+      </>
+    ))
+  }
+</p>

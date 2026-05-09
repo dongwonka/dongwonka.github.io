@@ -10,7 +10,31 @@
         "authors": {
           "type": "array",
           "items": {
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "bold": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "corresponding": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "additionalProperties": false
+              }
+            ]
           }
         },
         "venue": {
@@ -43,6 +67,14 @@
         "paperUrl": {
           "type": "string",
           "default": ""
+        },
+        "paperStatus": {
+          "type": "string",
+          "enum": [
+            "available",
+            "comingSoon"
+          ],
+          "default": "available"
         },
         "summary": {
           "type": "string"

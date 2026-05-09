@@ -2,9 +2,11 @@
 slug: "sam-reid"
 title: "SAM-driven MAE Pre-training and Background-aware Meta-learning for Unsupervised Vehicle Re-identification"
 authors:
-  - "Dong Wang"
+  - name: "Dong Wang"
+    bold: true
   - "Qi Wang"
-  - "Weidong Min"
+  - name: "Weidong Min"
+    corresponding: true
   - "Di Gai"
   - "Qing Han"
   - "Longfei Li"

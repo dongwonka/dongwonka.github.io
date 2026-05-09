@@ -3,8 +3,10 @@ slug: "tei-food-retrieval"
 title: "Threefold Encoder Interaction: Hierarchical Multi-Grained Semantic Alignment for Cross-Modal Food Retrieval"
 authors:
   - "Qi Wang"
-  - "Dong Wang"
-  - "Weidong Min"
+  - name: "Dong Wang"
+    bold: true
+  - name: "Weidong Min"
+    corresponding: true
   - "Di Gai"
   - "Qing Han"
   - "Cheng Zha"

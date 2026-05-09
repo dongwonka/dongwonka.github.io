@@ -4,7 +4,9 @@ title: "VehicleMAE: Masked Autoencoding for Robust Vehicle Re-Identification"
 authors:
   - "Qi Wang"
   - "Zeyu Zhang"
-  - "Dong Wang*"
+  - name: "Dong Wang"
+    bold: true
+    corresponding: true
   - "Di Gai"
   - "Xin Xiong"
   - "Jiyang Xu"
