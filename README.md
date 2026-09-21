@@ -6,7 +6,7 @@ This website is a minimal academic personal homepage built to present basic prof
 
 ## About
 
-I am a Ph.D. student at the National University of Defense Technology. My research interests include 3D understanding, vehicle re-identification, and multimodal perception.
+I am a Ph.D. student at the National University of Defense Technology. My research interests include World Modeling, Autonomous Driving, 3D Understanding, Occupancy Flow, and Multimodal Perception.
 
 This repository is used to host my public academic homepage through GitHub Pages.
 
@@ -52,6 +52,19 @@ For papers that do not yet have a public URL:
 paperUrl: ""
 paperStatus: "comingSoon"
 ```
+
+Published papers can include `publicationDate` (year, year-month, or full date),
+`publishedOnline` (a verified online publication date), `volume`, `issue`, `pages`,
+`articleNumber`, `doi`, `pdfUrl`, and `bibtexUrl`. Use `articleNumber` for journals
+that assign article numbers instead of a page range. Keep `acceptedDate` separate
+from publication dates.
+
+BibTeX files are stored under `public/bibtex/` and linked as `/bibtex/paper-slug.bib`.
+External official BibTeX URLs are also supported. For subscription articles, set
+`pdfAccess: "subscription"` and link to the publisher's access page; the button
+will read "PDF via Publisher" and explain the access requirement.
+
+Verified sources and date conventions are recorded in [publication-sources.md](docs/publication-sources.md).
 
 ## Contact
 

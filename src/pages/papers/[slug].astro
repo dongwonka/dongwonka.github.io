@@ -22,6 +22,18 @@ const base = import.meta.env.BASE_URL;
 const paperImage = `${base}${paper.image.replace(/^\//, '')}`;
 const paperUrl = typeof paper.paperUrl === 'string' ? paper.paperUrl.trim() : '';
 const hasPaperUrl = paper.paperStatus !== 'comingSoon' && /^https?:\/\/\S+$/i.test(paperUrl);
+const bibtexUrl = paper.bibtexUrl?.startsWith('/')
+  ? `${base}${paper.bibtexUrl.replace(/^\//, '')}`
+  : paper.bibtexUrl;
+const formatPublicationDate = (value: string) => {
+  const [year, month, day] = value.split('-').map(Number);
+  return new Date(Date.UTC(year, (month ?? 1) - 1, day ?? 1)).toLocaleDateString('en', {
+    year: 'numeric',
+    ...(month ? { month: 'long' as const } : {}),
+    ...(day ? { day: 'numeric' as const } : {}),
+    timeZone: 'UTC'
+  });
+};
 const date = new Date(`${paper.acceptedDate}T00:00:00`);
 const displayDate = date.toLocaleDateString('en', {
   year: 'numeric',
@@ -61,7 +73,9 @@ const displayPublishedOnline = paper.publishedOnline
 
     <section class="grid gap-5 rounded-md border border-slate-200 bg-white p-5 shadow-sm sm:grid-cols-2">
       <div>
-        <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Accepted By</p>
+        <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          {paper.paperStatus === 'comingSoon' ? 'Accepted By' : 'Published In'}
+        </p>
         <p class="mt-1 text-sm font-medium text-slate-900">{paper.venue}</p>
       </div>
       <div>
@@ -84,10 +98,36 @@ const displayPublishedOnline = paper.publishedOnline
           </p>
         </div>
       )}
+      {paper.publicationDate && (
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Publication Date</p>
+          <p class="mt-1 text-sm font-medium text-slate-900">
+            <time datetime={paper.publicationDate}>{formatPublicationDate(paper.publicationDate)}</time>
+          </p>
+        </div>
+      )}
+      {paper.volume && (
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Volume</p>
+          <p class="mt-1 text-sm font-medium text-slate-900">{paper.volume}</p>
+        </div>
+      )}
+      {paper.issue && (
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Issue</p>
+          <p class="mt-1 text-sm font-medium text-slate-900">{paper.issue}</p>
+        </div>
+      )}
       {paper.pages && (
         <div>
           <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Pages</p>
           <p class="mt-1 text-sm font-medium text-slate-900">{paper.pages}</p>
+        </div>
+      )}
+      {paper.articleNumber && (
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Article Number</p>
+          <p class="mt-1 text-sm font-medium text-slate-900">{paper.articleNumber}</p>
         </div>
       )}
       {paper.doi && (
@@ -135,18 +175,24 @@ const displayPublishedOnline = paper.publishedOnline
               rel="noreferrer"
               class="inline-flex rounded-md border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:border-sky-300 hover:text-sky-700"
             >
-              PDF
+              {paper.pdfAccess === 'subscription' ? 'PDF via Publisher' : 'PDF'}
             </a>
           )}
-          {paper.bibtexUrl && (
+          {bibtexUrl && (
             <a
-              href={paper.bibtexUrl}
+              href={bibtexUrl}
+              download={paper.bibtexUrl.startsWith('/') ? `${paper.slug}.bib` : undefined}
               target="_blank"
               rel="noreferrer"
               class="inline-flex rounded-md border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:border-sky-300 hover:text-sky-700"
             >
               BibTeX
             </a>
+          )}
+          {paper.pdfUrl && paper.pdfAccess === 'subscription' && (
+            <p class="basis-full text-sm leading-6 text-slate-500">
+              PDF access is provided by the publisher and may require an institutional subscription or purchase.
+            </p>
           )}
         </div>
       ) : (

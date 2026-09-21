@@ -5,10 +5,11 @@
   "affiliation": "National University of Defense Technology",
   "avatar": "/images/avatar.jpg",
   "researchInterests": [
+    "World Modeling",
+    "Autonomous Driving",
     "3D Understanding",
-    "Large-scale Pre-training",
-    "Multimodal Perception",
-    "Re-identification"
+    "Occupancy Flow",
+    "Multimodal Perception"
   ],
   "email": "dongwang25@nudt.edu.cn",
   "googleScholar": "https://scholar.google.com/citations?user=QGaI8lEAAAAJ&hl=en&authuser=1"
