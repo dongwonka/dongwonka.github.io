@@ -1,0 +1,55 @@
+---
+interface Props {
+  citation: string;
+  slug: string;
+}
+
+const { citation, slug } = Astro.props;
+const headingId = `bibtex-${slug}`;
+---
+
+<section class="min-w-0 space-y-3 border-t border-slate-200 pt-7" aria-labelledby={headingId} data-bibtex>
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <h2 id={headingId} class="text-xl font-semibold text-slate-950">BibTeX</h2>
+    <button
+      type="button"
+      data-copy-bibtex
+      class="rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 hover:border-sky-300 hover:text-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+    >
+      Copy BibTeX
+    </button>
+  </div>
+  <pre class="max-w-full whitespace-pre-wrap break-words rounded-md border border-slate-200 bg-white p-5 text-sm leading-6 text-slate-700"><code data-bibtex-text>{citation}</code></pre>
+  <p class="min-h-5 text-sm text-slate-600" role="status" aria-live="polite" data-copy-status></p>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-bibtex]').forEach((section) => {
+    const button = section.querySelector<HTMLButtonElement>('[data-copy-bibtex]');
+    const code = section.querySelector<HTMLElement>('[data-bibtex-text]');
+    const status = section.querySelector<HTMLElement>('[data-copy-status]');
+    if (!button || !code || !status) return;
+
+    let resetTimer: ReturnType<typeof setTimeout>;
+    button.addEventListener('click', async () => {
+      clearTimeout(resetTimer);
+      try {
+        await navigator.clipboard.writeText(code.textContent ?? '');
+        button.textContent = 'Copied!';
+        status.textContent = 'BibTeX copied to clipboard.';
+        resetTimer = setTimeout(() => {
+          button.textContent = 'Copy BibTeX';
+          status.textContent = '';
+        }, 3000);
+      } catch {
+        button.textContent = 'Copy BibTeX';
+        const range = document.createRange();
+        range.selectNodeContents(code);
+        const selection = window.getSelection();
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+        status.textContent = 'Citation selected. Press Ctrl+C (or ⌘C on Mac) to copy.';
+      }
+    });
+  });
+</script>

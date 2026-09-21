@@ -59,8 +59,10 @@ Published papers can include `publicationDate` (year, year-month, or full date),
 that assign article numbers instead of a page range. Keep `acceptedDate` separate
 from publication dates.
 
-BibTeX files are stored under `public/bibtex/` and linked as `/bibtex/paper-slug.bib`.
-External official BibTeX URLs are also supported. For subscription articles, set
+BibTeX files are stored under `public/bibtex/` and referenced in `bibtexUrl` as
+`/bibtex/paper-slug.bib`. Their contents are included at the bottom of each paper
+page during the build, with a "Copy BibTeX" button and a copy confirmation.
+Save citations from external sources locally before referencing them. For subscription articles, set
 `pdfAccess: "subscription"` and link to the publisher's access page; the button
 will read "PDF via Publisher" and explain the access requirement.
 

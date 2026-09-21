@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AuthorList from '../../components/AuthorList.astro';
+import BibtexCitation from '../../components/BibtexCitation.astro';
 import Tag from '../../components/Tag.astro';
 
 export async function getStaticPaths() {
@@ -22,9 +23,17 @@ const base = import.meta.env.BASE_URL;
 const paperImage = `${base}${paper.image.replace(/^\//, '')}`;
 const paperUrl = typeof paper.paperUrl === 'string' ? paper.paperUrl.trim() : '';
 const hasPaperUrl = paper.paperStatus !== 'comingSoon' && /^https?:\/\/\S+$/i.test(paperUrl);
-const bibtexUrl = paper.bibtexUrl?.startsWith('/')
-  ? `${base}${paper.bibtexUrl.replace(/^\//, '')}`
-  : paper.bibtexUrl;
+const citations = import.meta.glob<string>('../../../public/bibtex/*.bib', {
+  query: '?raw',
+  import: 'default',
+  eager: true
+});
+const citation = paper.bibtexUrl
+  ? citations[`../../../public${paper.bibtexUrl}`]?.trim()
+  : undefined;
+if (paper.bibtexUrl && !citation) {
+  throw new Error(`Missing BibTeX citation for ${paper.slug}: ${paper.bibtexUrl}`);
+}
 const formatPublicationDate = (value: string) => {
   const [year, month, day] = value.split('-').map(Number);
   return new Date(Date.UTC(year, (month ?? 1) - 1, day ?? 1)).toLocaleDateString('en', {
@@ -178,17 +187,6 @@ const displayPublishedOnline = paper.publishedOnline
               {paper.pdfAccess === 'subscription' ? 'PDF via Publisher' : 'PDF'}
             </a>
           )}
-          {bibtexUrl && (
-            <a
-              href={bibtexUrl}
-              download={paper.bibtexUrl.startsWith('/') ? `${paper.slug}.bib` : undefined}
-              target="_blank"
-              rel="noreferrer"
-              class="inline-flex rounded-md border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:border-sky-300 hover:text-sky-700"
-            >
-              BibTeX
-            </a>
-          )}
           {paper.pdfUrl && paper.pdfAccess === 'subscription' && (
             <p class="basis-full text-sm leading-6 text-slate-500">
               PDF access is provided by the publisher and may require an institutional subscription or purchase.
@@ -201,5 +199,6 @@ const displayPublishedOnline = paper.publishedOnline
         </p>
       )
     }
+    {citation && <BibtexCitation citation={citation} slug={paper.slug} />}
   </article>
 </BaseLayout>

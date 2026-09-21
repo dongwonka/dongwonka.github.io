@@ -1,8 +1,14 @@
 # Publication metadata sources
 
-Verified on 2026-09-21. Citation files are maintained in `public/bibtex/`.
+Verified on 2026-09-21. Citation files are maintained in `public/bibtex/` and
+rendered inline at the bottom of each paper page with a copy button.
 The original author order and author emphasis are retained. Acceptance dates
 are not inferred from publication dates or Crossref record-creation timestamps.
+
+## SpecBridge
+
+- [IJCAI official BibTeX](https://www.ijcai.org/proceedings/2026/bibtex/192) was saved verbatim as `public/bibtex/specbridge.bib` for inline display.
+- The official citation uses month 8 (August), while the [paper page](https://www.ijcai.org/proceedings/2026/192) records online publication on 2026-09-16. These describe different publication metadata; the original citation is retained.
 
 ## VehicleMAE
 

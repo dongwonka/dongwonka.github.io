@@ -102,16 +102,8 @@
           ]
         },
         "bibtexUrl": {
-          "anyOf": [
-            {
-              "type": "string",
-              "format": "uri"
-            },
-            {
-              "type": "string",
-              "pattern": "^\\/bibtex\\/[a-z0-9-]+\\.bib$"
-            }
-          ]
+          "type": "string",
+          "pattern": "^\\/bibtex\\/[a-z0-9-]+\\.bib$"
         },
         "paperStatus": {
           "type": "string",

@@ -31,10 +31,7 @@ const papers = defineCollection({
     paperUrl: z.string().optional().default(''),
     pdfUrl: z.string().url().optional(),
     pdfAccess: z.enum(['open', 'subscription']).optional(),
-    bibtexUrl: z.union([
-      z.string().url(),
-      z.string().regex(/^\/bibtex\/[a-z0-9-]+\.bib$/)
-    ]).optional(),
+    bibtexUrl: z.string().regex(/^\/bibtex\/[a-z0-9-]+\.bib$/).optional(),
     paperStatus: z.enum(['available', 'comingSoon']).optional().default('available'),
     summary: z.string(),
     abstract: z.string()
