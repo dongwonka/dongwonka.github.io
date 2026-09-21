@@ -28,6 +28,13 @@ const displayDate = date.toLocaleDateString('en', {
   month: 'long',
   day: 'numeric'
 });
+const displayPublishedOnline = paper.publishedOnline
+  ? new Date(`${paper.publishedOnline}T00:00:00`).toLocaleDateString('en', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+  : '';
 ---
 
 <BaseLayout title={`${paper.title} | Dong Wang`} description={paper.summary}>
@@ -69,6 +76,33 @@ const displayDate = date.toLocaleDateString('en', {
         <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Venue Level</p>
         <p class="mt-1 text-sm font-medium text-slate-900">{paper.venueLevel}</p>
       </div>
+      {displayPublishedOnline && (
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Published Online</p>
+          <p class="mt-1 text-sm font-medium text-slate-900">
+            <time datetime={paper.publishedOnline}>{displayPublishedOnline}</time>
+          </p>
+        </div>
+      )}
+      {paper.pages && (
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Pages</p>
+          <p class="mt-1 text-sm font-medium text-slate-900">{paper.pages}</p>
+        </div>
+      )}
+      {paper.doi && (
+        <div class="sm:col-span-2">
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">DOI</p>
+          <a
+            href={`https://doi.org/${paper.doi}`}
+            target="_blank"
+            rel="noreferrer"
+            class="mt-1 inline-block break-all text-sm font-medium text-slate-900 underline decoration-slate-300 underline-offset-2 hover:text-sky-700"
+          >
+            {paper.doi}
+          </a>
+        </div>
+      )}
     </section>
 
     <img
@@ -85,14 +119,36 @@ const displayDate = date.toLocaleDateString('en', {
 
     {
       hasPaperUrl ? (
-        <a
-          href={paperUrl}
-          target="_blank"
-          rel="noreferrer"
-          class="inline-flex rounded-md bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800"
-        >
-          View Paper
-        </a>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href={paperUrl}
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex rounded-md bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800"
+          >
+            View Paper
+          </a>
+          {paper.pdfUrl && (
+            <a
+              href={paper.pdfUrl}
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex rounded-md border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:border-sky-300 hover:text-sky-700"
+            >
+              PDF
+            </a>
+          )}
+          {paper.bibtexUrl && (
+            <a
+              href={paper.bibtexUrl}
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex rounded-md border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:border-sky-300 hover:text-sky-700"
+            >
+              BibTeX
+            </a>
+          )}
+        </div>
       ) : (
         <p class="inline-flex rounded-md border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-600">
           Coming soon.

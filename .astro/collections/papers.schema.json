@@ -49,6 +49,15 @@
         "acceptedDate": {
           "type": "string"
         },
+        "publishedOnline": {
+          "type": "string"
+        },
+        "pages": {
+          "type": "string"
+        },
+        "doi": {
+          "type": "string"
+        },
         "fieldTags": {
           "type": "array",
           "items": {
@@ -67,6 +76,14 @@
         "paperUrl": {
           "type": "string",
           "default": ""
+        },
+        "pdfUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "bibtexUrl": {
+          "type": "string",
+          "format": "uri"
         },
         "paperStatus": {
           "type": "string",
