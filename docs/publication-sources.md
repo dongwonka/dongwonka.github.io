@@ -1,9 +1,21 @@
 # Publication metadata sources
 
-Verified on 2026-09-21. Citation files are maintained in `public/bibtex/` and
+Last updated on 2026-11-11. Citation files are maintained in `public/bibtex/` and
 rendered inline at the bottom of each paper page with a copy button.
 The original author order and author emphasis are retained. Acceptance dates
 are not inferred from publication dates or Crossref record-creation timestamps.
+
+## Rh-3DGS
+
+- [PMLR paper page](https://proceedings.mlr.press/v306/zhao26s.html) supplies the citation, pages 161523–161549, and PDF link. [PMLR volume 306](https://proceedings.mlr.press/v306/) gives the proceedings publication date of 2026-09-29.
+- The supplied paper PDF identifies Jie Jiang as corresponding author. The website and local BibTeX follow the PDF's spelling and name order. PMLR's metadata lists the name as Jiang Jie.
+- The acceptance date uses the [ICML main-track notification date](https://icml.cc/Conferences/2026/Dates), 2026-04-30 AoE. The teaser is Figure 2 from the paper PDF.
+
+## ViewCoOp
+
+- [AAAI paper page](https://ojs.aaai.org/index.php/AAAI/article/view/32962) supplies the title, authors, volume 39, issue 8, pages 8896–8904, DOI, and publication date of 2025-04-11. The supplied paper PDF identifies Qi Wang as corresponding author.
+- The acceptance date uses the [AAAI main-track final notification date](https://aaai.org/conference/aaai/aaai-25/aaai-25-main-technical-call-for-papers/), 2024-12-09 AoE. The teaser is Figure 2 from the paper PDF.
+- The CCF-A labels for AAAI and ICML follow the [CCF artificial intelligence conference list](https://www.ccf.org.cn/Academic_Evaluation/AI/).
 
 ## SpecBridge
 
